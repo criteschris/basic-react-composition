@@ -49,22 +49,37 @@ export class App extends React.Component<IAppProps, IAppState> {
     }
 
     private _onTitleChanged(ev: React.ChangeEvent<HTMLInputElement>) {
-        this.setState({ task: assoc('title', ev.currentTarget.value, this.state.task) });
+        this.setState({
+            task: assoc('title', ev.currentTarget.value, this.state.task)
+        });
     }
 
     private _onDescriptionChanged(ev: React.ChangeEvent<HTMLTextAreaElement>) {
-        this.setState({ task: assoc('description', ev.currentTarget.value, this.state.task) });
+        this.setState({
+            task: assoc('description', ev.currentTarget.value, this.state.task)
+        });
     }
 
     private _onStatusChanged(ev: React.ChangeEvent<HTMLSelectElement>) {
-        this.setState({ task: assoc('status', ev.currentTarget.value, this.state.task) });
+        this.setState({
+            task: assoc('status', ev.currentTarget.value, this.state.task)
+        });
     }
 
     private _buildComponentProps() {
         this._components = [
-            compose(TextField('Title', this._onTitleChanged), prop('title')),
-            compose(MultilineTextField('Description', this._onDescriptionChanged), prop('description')),
-            compose(DropdownField('Status',this.state.statusOptions, this._onStatusChanged), prop('status'))
+            compose(
+                TextField('Title', this._onTitleChanged),
+                prop('title')
+            ),
+            compose(
+                MultilineTextField('Description', this._onDescriptionChanged),
+                prop('description')
+            ),
+            compose(
+                DropdownField('Status', this.state.statusOptions, this._onStatusChanged),
+                prop('status')
+            )
         ];
     }
 

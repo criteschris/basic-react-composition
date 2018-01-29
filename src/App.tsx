@@ -41,24 +41,40 @@ export class App extends React.Component<IAppProps, IAppState> {
     }
 
     private _onTitleChanged(ev: React.ChangeEvent<HTMLInputElement>) {
-        this.setState({ task: assoc('title', ev.currentTarget.value, this.state.task) });
+        this.setState({
+            task: assoc('title', ev.currentTarget.value, this.state.task)
+        });
     }
 
     private _onDescriptionChanged(ev: React.ChangeEvent<HTMLTextAreaElement>) {
-        this.setState({ task: assoc('description', ev.currentTarget.value, this.state.task) });
+        this.setState({
+            task: assoc('description', ev.currentTarget.value, this.state.task)
+        });
     }
 
     private _onStatusChanged(ev: React.ChangeEvent<HTMLSelectElement>) {
-        this.setState({ task: assoc('status', ev.currentTarget.value, this.state.task) });
+        this.setState({
+            task: assoc('status', ev.currentTarget.value, this.state.task)
+        });
     }
 
     public render() {
         return (
             <div className='container'>
                 <div className='header'>Task Form</div>
-                <TextField label='Title' value={this.state.task.title} onChanged={this._onTitleChanged} />
-                <DropdownField label='Status' selectedKey={this.state.task.status} options={this.state.statusOptions} onChanged={this._onStatusChanged} />
-                <MultilineTextField label='Description' value={this.state.task.description} onChanged={this._onDescriptionChanged} />
+                <TextField
+                    label='Title'
+                    value={this.state.task.title}
+                    onChanged={this._onTitleChanged} />
+                <DropdownField
+                    label='Status'
+                    selectedKey={this.state.task.status}
+                    options={this.state.statusOptions}
+                    onChanged={this._onStatusChanged} />
+                <MultilineTextField
+                    label='Description'
+                    value={this.state.task.description}
+                    onChanged={this._onDescriptionChanged} />
             </div>
         );
     }
