@@ -2,10 +2,13 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-    entry: './src/App.tsx',
+    entry: {
+        'app': './src/App.tsx',
+        'composedapp': './src/ComposedApp.tsx'
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: './js/app.js'
+        filename: './js/[name].js'
     },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx']

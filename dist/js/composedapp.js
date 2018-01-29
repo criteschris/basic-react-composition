@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 350);
+/******/ 	return __webpack_require__(__webpack_require__.s = 354);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -32274,7 +32274,11 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 350 */
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32293,14 +32297,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(18);
 var ReactDOM = __webpack_require__(137);
 var ramda_1 = __webpack_require__(70);
-var TextField_1 = __webpack_require__(351);
-var DropdownField_1 = __webpack_require__(352);
-var MultilineTextField_1 = __webpack_require__(353);
+var CurriedTextField_1 = __webpack_require__(355);
+var CurriedDropdownField_1 = __webpack_require__(356);
+var CurriedMultilineTextField_1 = __webpack_require__(357);
 __webpack_require__(345);
 var App = /** @class */ (function (_super) {
     __extends(App, _super);
     function App(props) {
         var _this = _super.call(this, props) || this;
+        _this._componentProps = [];
+        _this._components = [];
         _this.state = {
             task: {
                 id: 1,
@@ -32318,8 +32324,12 @@ var App = /** @class */ (function (_super) {
         _this._onTitleChanged = _this._onTitleChanged.bind(_this);
         _this._onDescriptionChanged = _this._onDescriptionChanged.bind(_this);
         _this._onStatusChanged = _this._onStatusChanged.bind(_this);
+        _this._buildComponentProps = _this._buildComponentProps.bind(_this);
         return _this;
     }
+    App.prototype.componentWillMount = function () {
+        this._buildComponentProps();
+    };
     App.prototype._onTitleChanged = function (ev) {
         this.setState({ task: ramda_1.assoc('title', ev.currentTarget.value, this.state.task) });
     };
@@ -32329,12 +32339,17 @@ var App = /** @class */ (function (_super) {
     App.prototype._onStatusChanged = function (ev) {
         this.setState({ task: ramda_1.assoc('status', ev.currentTarget.value, this.state.task) });
     };
+    App.prototype._buildComponentProps = function () {
+        this._components = [
+            ramda_1.compose(CurriedTextField_1.default('Title', this._onTitleChanged), ramda_1.prop('title')),
+            ramda_1.compose(CurriedMultilineTextField_1.default('Description', this._onDescriptionChanged), ramda_1.prop('description')),
+            ramda_1.compose(CurriedDropdownField_1.default('Status', this.state.statusOptions, this._onStatusChanged), ramda_1.prop('status'))
+        ];
+    };
     App.prototype.render = function () {
         return (React.createElement("div", { className: 'container' },
             React.createElement("div", { className: 'header' }, "Task Form"),
-            React.createElement(TextField_1.default, { label: 'Title', value: this.state.task.title, onChanged: this._onTitleChanged }),
-            React.createElement(DropdownField_1.default, { label: 'Status', selectedKey: this.state.task.status, options: this.state.statusOptions, onChanged: this._onStatusChanged }),
-            React.createElement(MultilineTextField_1.default, { label: 'Description', value: this.state.task.description, onChanged: this._onDescriptionChanged })));
+            ramda_1.juxt(this._components)(this.state.task)));
     };
     return App;
 }(React.Component));
@@ -32343,51 +32358,54 @@ ReactDOM.render(React.createElement(App, null), document.getElementById('app-hos
 
 
 /***/ }),
-/* 351 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(18);
-exports.default = function (props) {
+var ramda_1 = __webpack_require__(70);
+exports.default = ramda_1.curry(function (label, onChanged, value) {
     return (React.createElement("div", { className: 'field-group' },
         React.createElement("div", { className: 'field-label' },
-            React.createElement("label", null, props.label)),
-        React.createElement("input", { type: 'text', value: props.value, onChange: props.onChanged })));
-};
+            React.createElement("label", null, label)),
+        React.createElement("input", { type: 'text', value: value, onChange: onChanged })));
+});
 
 
 /***/ }),
-/* 352 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(18);
-exports.default = function (props) {
+var ramda_1 = __webpack_require__(70);
+exports.default = ramda_1.curry(function (label, options, onChanged, selectedKey) {
     return (React.createElement("div", { className: 'field-group' },
         React.createElement("div", { className: 'field-label' },
-            React.createElement("label", null, props.label)),
-        React.createElement("select", { onChange: props.onChanged }, props.options.map(function (o) { return React.createElement("option", { key: o.key, value: o.key }, o.text); }))));
-};
+            React.createElement("label", null, label)),
+        React.createElement("select", { value: selectedKey, onChange: onChanged }, options.map(function (o) { return React.createElement("option", { key: o.key, value: o.key }, o.text); }))));
+});
 
 
 /***/ }),
-/* 353 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(18);
-exports.default = function (props) {
+var ramda_1 = __webpack_require__(70);
+exports.default = ramda_1.curry(function (label, onChanged, value) {
     return (React.createElement("div", { className: 'field-group' },
         React.createElement("div", { className: 'field-label' },
-            React.createElement("label", null, props.label)),
-        React.createElement("textarea", { rows: 6, value: props.value, onChange: props.onChanged })));
-};
+            React.createElement("label", null, label)),
+        React.createElement("textarea", { rows: 6, value: value, onChange: onChanged })));
+});
 
 
 /***/ })
