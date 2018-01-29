@@ -32331,13 +32331,19 @@ var App = /** @class */ (function (_super) {
         this._buildComponentProps();
     };
     App.prototype._onTitleChanged = function (ev) {
-        this.setState({ task: ramda_1.assoc('title', ev.currentTarget.value, this.state.task) });
+        this.setState({
+            task: ramda_1.assoc('title', ev.currentTarget.value, this.state.task)
+        });
     };
     App.prototype._onDescriptionChanged = function (ev) {
-        this.setState({ task: ramda_1.assoc('description', ev.currentTarget.value, this.state.task) });
+        this.setState({
+            task: ramda_1.assoc('description', ev.currentTarget.value, this.state.task)
+        });
     };
     App.prototype._onStatusChanged = function (ev) {
-        this.setState({ task: ramda_1.assoc('status', ev.currentTarget.value, this.state.task) });
+        this.setState({
+            task: ramda_1.assoc('status', ev.currentTarget.value, this.state.task)
+        });
     };
     App.prototype._buildComponentProps = function () {
         this._components = [
@@ -32348,7 +32354,7 @@ var App = /** @class */ (function (_super) {
     };
     App.prototype.render = function () {
         return (React.createElement("div", { className: 'container' },
-            React.createElement("div", { className: 'header' }, "Task Form"),
+            React.createElement("div", { className: 'header' }, "Task Form (composed)"),
             ramda_1.juxt(this._components)(this.state.task)));
     };
     return App;

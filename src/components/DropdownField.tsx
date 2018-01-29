@@ -18,7 +18,7 @@ export default (props: IDropdownFieldProps) => {
             <div className='field-label'>
                 <label>{props.label}</label>
             </div>
-            <select onChange={props.onChanged} >
+            <select value={props.selectedKey} onChange={props.onChanged} >
                 {props.options.map(o => <option key={o.key} value={o.key}>{o.text}</option>)}
             </select>
         </div>

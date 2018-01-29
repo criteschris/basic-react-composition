@@ -32321,13 +32321,19 @@ var App = /** @class */ (function (_super) {
         return _this;
     }
     App.prototype._onTitleChanged = function (ev) {
-        this.setState({ task: ramda_1.assoc('title', ev.currentTarget.value, this.state.task) });
+        this.setState({
+            task: ramda_1.assoc('title', ev.currentTarget.value, this.state.task)
+        });
     };
     App.prototype._onDescriptionChanged = function (ev) {
-        this.setState({ task: ramda_1.assoc('description', ev.currentTarget.value, this.state.task) });
+        this.setState({
+            task: ramda_1.assoc('description', ev.currentTarget.value, this.state.task)
+        });
     };
     App.prototype._onStatusChanged = function (ev) {
-        this.setState({ task: ramda_1.assoc('status', ev.currentTarget.value, this.state.task) });
+        this.setState({
+            task: ramda_1.assoc('status', ev.currentTarget.value, this.state.task)
+        });
     };
     App.prototype.render = function () {
         return (React.createElement("div", { className: 'container' },
