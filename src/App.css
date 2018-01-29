@@ -1,0 +1,31 @@
+.container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    max-width: 400px;
+}
+
+.container .header {
+    font-size: 24px;
+    font-weight: 600;
+    padding: 6px;
+    margin-bottom: 4px;
+}
+
+.container .field-group {
+    padding: 6px;
+}
+
+.container .field-group .field-label {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.container .field-group input, .container .field-group select {
+    height: 28px;
+}
+
+.container .field-group input, .container .field-group textarea, .container .field-group select {
+    box-sizing: border-box;
+    padding: 4px;
+    width: 100%;
+}

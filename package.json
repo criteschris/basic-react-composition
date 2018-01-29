@@ -1,0 +1,32 @@
+{
+  "name": "basic-react-composition",
+  "version": "1.0.0",
+  "description": "Basic example of using React and Ramda for composing components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/criteschris/basic-react-composition.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/criteschris/basic-react-composition/issues"
+  },
+  "homepage": "https://github.com/criteschris/basic-react-composition#readme",
+  "dependencies": {
+    "@types/ramda": "^0.25.16",
+    "@types/react": "^16.0.35",
+    "@types/react-dom": "^16.0.3",
+    "awesome-typescript-loader": "^3.4.1",
+    "css-loader": "^0.28.9",
+    "ramda": "^0.25.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "style-loader": "^0.20.1",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0"
+  }
+}
